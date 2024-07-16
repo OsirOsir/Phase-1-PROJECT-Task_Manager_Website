@@ -25,6 +25,8 @@ header{
   background-color: transparent;
   padding: 5px 10px; /* Add some padding for better button appearance */
   cursor: pointer;
+  outline: none;
+  border: none;
 }
 #logButton:active {
   border: none; 
@@ -72,17 +74,32 @@ header{
   background-color: rgba(0, 0, 0, 0.1);
   border: none;
   border-radius: 5px;
+  outline: none;
 }
 #signIn:hover{
   color:white;
+  border: none;
+  background-color: #007bff;
 }
 #signUp{
   background-color: rgba(0, 0, 0, 0.1);
   border: none;
   border-radius: 5px;
-  color: green;
-}
-#signUp:hover{
-  color:black;
+  color: whitesmoke;
+  outline: none;
+  
 }
 
+#signUp:hover{
+  color:black;
+  background-color: #007bff;
+ 
+}
+#signIn:active{
+  border: none;
+  background-color: #0f69ca;
+}
+#signUp:active{
+  border: none;
+  background-color: #0f69ca;
+}

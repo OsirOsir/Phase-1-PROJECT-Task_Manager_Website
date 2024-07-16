@@ -1,3 +1,82 @@
 body{
   font-family: Arial, Helvetica, sans-serif;
 }
+
+#introContainer{
+ margin-top: 100px;
+ display: flex;
+ align-items: center;
+ text-align: center;
+ flex-direction: column;
+}
+#introContainer button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none;
+}
+
+#introContainer button:hover {
+  background-color: #0056b3;
+}
+#introContainer button:active{
+  border: none;
+  background-color: #0f69ca;
+}
+.form-container {
+  display: none;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  
+}
+
+/* Heading styling */
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Styling for form groups */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Input field styling */
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Button styling */
+#submitButton {
+  /* width: 100%; */
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Button hover effect */
+#submitButton:hover {
+  background-color: #0056b3;
+}
