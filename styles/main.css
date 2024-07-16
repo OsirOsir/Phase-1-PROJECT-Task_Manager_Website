@@ -18,6 +18,8 @@ body{
   cursor: pointer;
   font-size: 16px;
   outline: none;
+  transition: color 0.15s, background-color 0.15s ;
+
 }
 
 #introContainer button:hover {
@@ -27,7 +29,39 @@ body{
   border: none;
   background-color: #0f69ca;
 }
-.form-container {
+
+#inform-container{
+  display: none;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+}
+#inform-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+/* Button styling */
+#inform-container button {
+  /* width: 100%; */
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Button hover effect */
+#inform-container button:hover {
+  background-color: #0056b3;
+}
+
+
+#upform-container {
   display: none;
   max-width: 400px;
   margin: 50px auto;
@@ -39,9 +73,24 @@ body{
 }
 
 /* Heading styling */
-.form-container h2 {
+#upform-container h2 {
   text-align: center;
   margin-bottom: 20px;
+}
+#upform-container button {
+  /* width: 100%; */
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Button hover effect */
+#upform-container button:hover {
+  background-color: #0056b3;
 }
 
 /* Styling for form groups */
@@ -64,19 +113,4 @@ body{
   box-sizing: border-box;
 }
 
-/* Button styling */
-#submitButton {
-  /* width: 100%; */
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
 
-/* Button hover effect */
-#submitButton:hover {
-  background-color: #0056b3;
-}
