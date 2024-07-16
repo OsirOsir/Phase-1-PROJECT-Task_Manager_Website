@@ -1,0 +1,24 @@
+## Osir Task Manager Website
+
+##Problem Statement
+Many individuals  face challenges in managing their daily tasks and responsibilities efficiently. Without a structured system, tasks can easily be forgotten or mismanaged, leading to decreased productivity and increased stress. There is a need for an easy-to-use application that helps users organize and prioritize their tasks effectively.
+
+##Solution
+To address these issues, I will develop a task management website that provides a seamless experience for users to organize their tasks. The website  will allow users to securely log in, create, edit, and delete tasks, set deadlines, and categorize tasks by priority. It will securely store user credentials, task information, and other related data. Ultimately, the website will provide reminders and notifications to help users stay on top of their responsibilities.
+
+##MVP Features
+User authentication.
+Users can create, edit, and delete tasks.
+Users can set deadlines and priorities for tasks.
+Users can categorize tasks into different projects or groups.
+Users can view tasks in a calendar or list view.
+Users can receive reminders and notifications for upcoming deadlines.
+
+##Technical Expectations
+HTML
+CSS
+JavaScript
+JSON server (db.json)
+Bootstrap
+
+

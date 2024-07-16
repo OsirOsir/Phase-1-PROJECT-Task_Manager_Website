@@ -1,0 +1,88 @@
+header{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 15px;
+}
+
+#headerContainer{
+  display: flex;
+  justify-content: space-around; /* Distributes space between items */
+  align-items: center; /* Centers items vertically */
+  background-color: rgb(224, 207, 207);
+  height: 60px;
+  padding: 0 20px;
+}
+
+.left-part {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+
+}
+#logButton{
+  background-color: transparent;
+  padding: 5px 10px; /* Add some padding for better button appearance */
+  cursor: pointer;
+}
+#logButton:active {
+  border: none; 
+}
+#log {
+  width: 40px;
+  height: 40px;
+  color: white;
+  background-color: orangered;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.left-part p {
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  
+}
+
+.middle-part {
+ 
+  
+}
+.middle-part a{
+  margin-left: 50px;
+  text-decoration: none;
+  color: black;
+  
+}
+.middle-part a:hover{
+  text-decoration-line: none;
+}
+.right-part{
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+#signIn{
+  /* margin-right: 15px; */
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 5px;
+}
+#signIn:hover{
+  color:white;
+}
+#signUp{
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 5px;
+  color: green;
+}
+#signUp:hover{
+  color:black;
+}
+
