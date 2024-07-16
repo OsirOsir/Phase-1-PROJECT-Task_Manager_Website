@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () =>{
   const signUpFormContainer = document.getElementById("upform-container");
 
 
-  signInButton.addEventListener("click", () => {
+  signInButton.addEventListener("click", (e) => {
+    e.preventDefault()
     signInFormContainer.innerHTML = `
     <form id="signInForm">
           <h2>Sign In</h2>
@@ -21,8 +22,17 @@ document.addEventListener("DOMContentLoaded", () =>{
         </form>
     `
     signInFormContainer.style.display = "block"
+
+    document.getElementById("signInForm").addEventListener("submit", (e) => {
+      e.preventDefault()
+      const email = document.getElementById("userEmail").value;
+      const password = document.getElementById("userPassword").value;
+      loginUser(email, password)
+    })
   })
-  signUpButton.addEventListener("click", () => {
+
+  signUpButton.addEventListener("click", (e) => {
+    e.preventDefault()
     signUpFormContainer.innerHTML = `
     <form id="signUpForm">
           <h2>Sign Up</h2>
@@ -42,21 +52,50 @@ document.addEventListener("DOMContentLoaded", () =>{
         </form>
     `
     signUpFormContainer.style.display = "block"
+
+    document.getElementById("signUpForm").addEventListener("submit", (e) => {
+      e.preventDefault()
+      const username = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      registerUser(email, password)
+    })
   })
-  
-  function registerUser(username, password) {
+
+  function registerUser(email, password) {
     fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({username, password})
+      body: JSON.stringify({email, password})
     })
     .then(res => res.json())
     .then(userData => {
-      console.log("Succefully Registered", userData)
+      console.log("Succefully Registered", userData);
+      alert("Registration succesful! Please log in now.");
+      // redirects to log in and hides sign-up form, (show sign in form)
+      signUpFormContainer.style.display = "none"
+      signInButton.click();
     })
   }
-  registerUser()
+  
+  function loginUser(email, password) {
+    fetch(`http://localhost:3000/users?email=${email}&password=${password}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.length > 0) {
+        console.log("User Logged in:", data[0]);
+        alert("Login succeful!")
+        //the below code stores users details in a local storage
+        localStorage.setItem("currentUser", JSON.stringify(data[0]));
+        signInFormContainer.style.display = "none"
+      } else {
+        console.log("Invalid credentials");
+        alert("Invalid credentials. Please try again");
+      }
+    })
+  }
 
+  
 })
