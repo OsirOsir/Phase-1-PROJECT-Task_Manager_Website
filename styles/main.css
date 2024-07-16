@@ -9,9 +9,9 @@ body{
  text-align: center;
  flex-direction: column;
 }
-#introContainer button {
-  padding: 10px 20px;
-  background-color: #007bff;
+#btn1 {
+  padding: 5px 20px;
+  background-color: orange;
   color: white;
   border: none;
   border-radius: 5px;
@@ -22,12 +22,39 @@ body{
 
 }
 
-#introContainer button:hover {
-  background-color: #0056b3;
+#btn1:hover {
+  background-color: rgb(212, 148, 30);
 }
-#introContainer button:active{
+#btn1:active{
   border: none;
-  background-color: #0f69ca;
+  background-color: rgb(131, 95, 30);
+}
+#btn2 {
+  padding: 5px 20px;
+  background-color:transparent;
+  color: rgb(25, 85, 25);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+  outline: none;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  transition: color 0.15s, background-color 0.15s ;
+
+}
+
+#btn2:hover {
+  /* background-color: #0056b3; */
+  background-color: rgb(233, 230, 230);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+#btn2:active{
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
 #inform-container{
@@ -77,7 +104,7 @@ body{
   text-align: center;
   margin-bottom: 20px;
 }
-#upform-container button {
+#form-container button {
   /* width: 100%; */
   padding: 10px;
   background-color: #007bff;
