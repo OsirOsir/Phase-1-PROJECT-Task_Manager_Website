@@ -1,13 +1,15 @@
-document.addEventListener("DOMContentLoaded", () =>{
+document.addEventListener("DOMContentLoaded", () => {
   const signInButton = document.getElementById("signIn");
   const signUpButton = document.getElementById("signUp");
   const signInFormContainer = document.getElementById("inform-container");
   const signUpFormContainer = document.getElementById("upform-container");
   const createButton = document.getElementById("btn1");
-  const mreButton = document.getElementById("btn2");
+  // const mreButton = document.getElementById("btn2");
   const taskFormContainer = document.getElementById("taskFormContainer");
-  
+  const tasksList = document.getElementById("tasksList");
+  const currentUser = JSON.parse(localStorage.getItem("currentUser")); //I'm retreving the currentUser object stored locally browser storage.. when I logged in 
 
+  pullTask();
 
   signInButton.addEventListener("click", (e) => {
     e.preventDefault()
@@ -65,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () =>{
       const password = document.getElementById("password").value
       registerUser(email, password)
     })
-    
+
   })
 
   function registerUser(email, password) {
@@ -74,32 +76,32 @@ document.addEventListener("DOMContentLoaded", () =>{
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({email, password})
+      body: JSON.stringify({ email, password })
     })
-    .then(res => res.json())
-    .then(userData => {
-      console.log("Registered succesfully", userData);
-      alert("Registered Succesfully!.. Now log in ");
-      signUpFormContainer.style.display = "none" //redirects to log in and hides the sighnup button 
-      signInButton.click();
-    })
+      .then(res => res.json())
+      .then(userData => {
+        console.log("Registered succesfully", userData);
+        alert("Registered Succesfully!.. Now log in ");
+        signUpFormContainer.style.display = "none" //redirects to log in and hides the sighnup button 
+        signInButton.click();
+      })
   }
 
   function loginUser(email, password) {
     fetch(`http://localhost:3000/users?email=${email}&password=${password}`) // this helps me in filtering capability within JSON 
-    .then(res => res.json())
-    .then(data => {
-      if (data.length > 0 && data[0].password.trim() !== " ") { //thhis ensures the data password is not empty
-        console.log("User logged in ", data[0])  //checks the first object in the array this helps me with debugging
-        alert("Login succeful!")
+      .then(res => res.json())
+      .then(data => {
+        if (data.length > 0 && data[0].password.trim() !== " ") { //thhis ensures the data password is not empty
+          console.log("User logged in ", data[0])  //checks the first object in the array this helps me with debugging
+          alert("Login succeful!")
 
-        localStorage.setItem("currentUser", JSON.stringify(data[0]));
-        signInFormContainer.style.display = "none"
-      } else {
-        console.log("Invalid loggins");
-        alert("Invalid Loggins. Try again");
-      }
-    })
+          localStorage.setItem("currentUser", JSON.stringify(data[0]));
+          signInFormContainer.style.display = "none"
+        } else {
+          console.log("Invalid loggins");
+          alert("Invalid Loggins. Try again");
+        }
+      })
   }
 
   createButton.addEventListener("click", (e) => {
@@ -141,8 +143,8 @@ document.addEventListener("DOMContentLoaded", () =>{
       const description = document.getElementById("taskDescription").value;
       const deadline = document.getElementById("taskDeadline").value;
       const priority = document.getElementById("taskPriority").value;
-      const category  = document.getElementById("taskCategory").value;
-      
+      const category = document.getElementById("taskCategory").value;
+
       createTask(title, description, deadline, priority, category);
     });
   });
@@ -153,23 +155,54 @@ document.addEventListener("DOMContentLoaded", () =>{
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({title, description, deadline, priority, category})
+      body: JSON.stringify({ title, description, deadline, priority, category })
     })
-    .then(res => res.json())
-    .then(taskData => {
-      console.log("Task created", taskData)
-      alert("Task created succefully")
-      taskForm.reset();
-    })
-    .catch(error => console.error("Error creating task:", error));
+      .then(res => res.json())
+      .then(taskData => {
+        console.log("Task created", taskData)
+        alert("Task created succefully")
+        taskForm.reset();
+      })
+      .catch(error => console.error("Error creating task:", error));
   }
 
   function pullTask() {
-    fetch("http://localhost:3000/tasks")
-    .then(res => res.json)
-    .then(listData => {
-      
-    })
+    fetch(`http://localhost:3000/tasks?userId=${currentUser.id}`) // a querry parameter
+      .then(res => res.json())
+      .then(listData => {
+        tasksList.innerHTML = "";
+        listData.forEach(task => {
+          const li = document.createElement("li");
+          li.innerHTML = `
+        <h3>${task.title}</h3>
+        <p>${task.description}</p>
+        <p>Deadline: ${task.deadline}</p>
+        <p>Priority: ${task.priority}</p>
+        <p>Category: ${task.category}</p>
+        <button id="deleteTask" data-task-id="${task.id}">Delete</button>        
+        `;
+
+          tasksList.appendChild(li);
+        });
+        //adding eventlisteners to the buttons while it iterates through each button in the list and then calls the functions Taskdelete
+        document.querySelectorAll("#deleteTask").forEach(button => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            const taskId = button.getAttribute("data-task-id");
+            deleteTask(taskId);
+          })
+        })
+      });
   }
-  
+  function deleteTask(taskId) {
+    fetch(`http://localhost:3000/tasks/${taskId}`, {
+      method: "DELETE"
+    })
+      .then(() => {
+        alert("Task deleted succesfully!");
+        pullTask(); //takes me back to pull tasksList
+      })
+      .catch(error => console.error("Problem deleting task", error));
+  }
+
 })

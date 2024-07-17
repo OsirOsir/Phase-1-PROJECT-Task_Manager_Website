@@ -43,12 +43,12 @@
       "completed": false
     },
     {
-      "id": "76bd",
+      "id": "37da",
       "title": "My First task",
-      "description": "ssss",
+      "description": "Original type of task",
       "deadline": "2024-07-18",
-      "priority": "low",
-      "category": "ssss"
+      "priority": "medium",
+      "category": "Home"
     }
   ]
 }
