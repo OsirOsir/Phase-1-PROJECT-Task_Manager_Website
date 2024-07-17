@@ -38,15 +38,45 @@
         <h1>Manage Your Task with</h1>
         <p>oTmanager</p>
         <div>
-          <button id="btn1">Get Started</button>
+          <button id="btn1">Create <br> <Span style="color: green; font-weight: bolder;">New Task</Span></button>
           <button id="btn2">More....</button>
         </div>
       </div>
       <div id="inform-container"></div>
       <div id="upform-container"></div>
+
+      <div id="taskFormContainer">
+        <h2>Create a New Task</h2>
+        <form id="taskForm">
+            <div class="form-group">
+                <label for="taskTitle">Task Title:</label>
+                <input type="text" id="taskTitle" name="taskTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="taskDescription">Description:</label>
+                <textarea id="taskDescription" name="taskDescription"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="taskDeadline">Deadline:</label>
+                <input type="date" id="taskDeadline" name="taskDeadline">
+            </div>
+            <div class="form-group">
+                <label for="taskPriority">Priority:</label>
+                <select id="taskPriority" name="taskPriority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="taskCategory">Category:</label>
+                <input type="text" id="taskCategory" name="taskCategory">
+            </div>
+            <button type="submit">Create Task</button>
+        </form>
     </div>
     </main>
-    
+    </div>
     <footer></footer>
   </div>
   <script src="js/index.js"></script>

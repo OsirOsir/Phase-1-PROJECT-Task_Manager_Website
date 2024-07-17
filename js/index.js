@@ -16,28 +16,75 @@ document.addEventListener("DOMContentLoaded", () =>{
           </div>
           <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="userPassword" name="password">
+            <input type="password" id="userPassword" name="password" required>
           </div>
           <button type="submit" id="submitButtonIn">Sign In</button>
         </form>
     `
     signInFormContainer.style.display = "block"
 
-    signInForm.addEventListener("submit", (e) => {
+    document.getElementById("signInForm").addEventListener("submit", (e) => {
       e.preventDefault()
       const email = document.getElementById("userEmail").value;
       const password = document.getElementById("userPassword").value;
       loginUser(email, password)
     })
-
-
   })
+
+  signUpButton.addEventListener("click", (e) => {
+    e.preventDefault()
+    signUpFormContainer.innerHTML = `
+    <form id="signUpForm">
+          <h2>Sign Up</h2>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <button type="submit" id="submitButtonUp">Sign Up</button>
+        </form>
+    `
+    signUpFormContainer.style.display = "block"
+
+    document.getElementById("signUpForm").addEventListener("submit", (e) => {
+      e.preventDefault()
+      const userName = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value
+      registerUser(email, password)
+    })
+    
+  })
+
+  function registerUser(email, password) {
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({email, password})
+    })
+    .then(res => res.json())
+    .then(userData => {
+      console.log("Registered succesfully", userData);
+      alert("Registered Succesfully!.. Now log in ");
+      signUpFormContainer.style.display = "none" //redirects to log in and hides the sighnup button 
+      signInButton.click();
+    })
+  }
 
   function loginUser(email, password) {
     fetch(`http://localhost:3000/users?email=${email}&password=${password}`) // this helps me in filtering capability within JSON 
     .then(res => res.json())
     .then(data => {
-      if (data.length > 0 && data[0].password.trim() !== "") { //thhis ensures the data password is not empty
+      if (data.length > 0 && data[0].password.trim() !== " ") { //thhis ensures the data password is not empty
         console.log("User logged in ", data[0])  //checks the first object in the array this helps me with debugging
         alert("Login succeful!")
 
@@ -49,5 +96,7 @@ document.addEventListener("DOMContentLoaded", () =>{
       }
     })
   }
+
+  
 
 })
