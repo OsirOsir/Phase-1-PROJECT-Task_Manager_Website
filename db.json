@@ -43,11 +43,11 @@
       "completed": false
     },
     {
-      "id": "37da",
-      "title": "My First task",
-      "description": "Original type of task",
-      "deadline": "2024-07-18",
-      "priority": "medium",
+      "id": "412a",
+      "title": "Cooking",
+      "description": "Chapati\nBake a cake",
+      "deadline": "2024-07-17",
+      "priority": "high",
       "category": "Home"
     }
   ]

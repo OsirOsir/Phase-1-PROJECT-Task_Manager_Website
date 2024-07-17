@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const taskForm = document.getElementById("taskForm")
     taskForm.style.display = "block"
     taskForm.addEventListener("submit", (e) => {
-      e.preventDefault()
+      // e.preventDefault()
 
       const title = document.getElementById("taskTitle").value;
       const description = document.getElementById("taskDescription").value;
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(res => res.json())
       .then(taskData => {
         console.log("Task created", taskData)
-        alert("Task created succefully")
+        alert("Confirm to create task")
         taskForm.reset();
       })
       .catch(error => console.error("Error creating task:", error));
@@ -199,10 +199,12 @@ document.addEventListener("DOMContentLoaded", () => {
       method: "DELETE"
     })
       .then(() => {
-        alert("Task deleted succesfully!");
+        alert("Delete Task ?");
         pullTask(); //takes me back to pull tasksList
       })
       .catch(error => console.error("Problem deleting task", error));
   }
+
+  
 
 })
