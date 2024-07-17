@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", () =>{
   const signUpButton = document.getElementById("signUp");
   const signInFormContainer = document.getElementById("inform-container");
   const signUpFormContainer = document.getElementById("upform-container");
+  const createButton = document.getElementById("btn1");
+  const mreButton = document.getElementById("btn2");
+  const taskFormContainer = document.getElementById("taskFormContainer");
+  
 
 
   signInButton.addEventListener("click", (e) => {
@@ -22,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () =>{
         </form>
     `
     signInFormContainer.style.display = "block"
+    // signInFormContainer.style.zIndex = 1000
 
     document.getElementById("signInForm").addEventListener("submit", (e) => {
       e.preventDefault()
@@ -97,6 +102,74 @@ document.addEventListener("DOMContentLoaded", () =>{
     })
   }
 
-  
+  createButton.addEventListener("click", (e) => {
+    taskFormContainer.innerHTML = `
+        <form id="taskForm">
+            <div class="form-group">
+                <label for="taskTitle">Task Title:</label>
+                <input type="text" id="taskTitle" name="taskTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="taskDescription">Description:</label>
+                <textarea id="taskDescription" name="taskDescription"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="taskDeadline">Deadline:</label>
+                <input type="date" id="taskDeadline" name="taskDeadline">
+            </div>
+            <div class="form-group">
+                <label for="taskPriority">Priority:</label>
+                <select id="taskPriority" name="taskPriority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="taskCategory">Category:</label>
+                <input type="text" id="taskCategory" name="taskCategory">
+            </div>
+            <button type="submit">Create Task</button>
+        </form>
+    `
+    const taskForm = document.getElementById("taskForm")
+    taskForm.style.display = "block"
+    taskForm.addEventListener("submit", (e) => {
+      e.preventDefault()
 
+      const title = document.getElementById("taskTitle").value;
+      const description = document.getElementById("taskDescription").value;
+      const deadline = document.getElementById("taskDeadline").value;
+      const priority = document.getElementById("taskPriority").value;
+      const category  = document.getElementById("taskCategory").value;
+      
+      createTask(title, description, deadline, priority, category);
+    });
+  });
+
+  function createTask(title, description, deadline, priority, category) {
+    fetch("http://localhost:3000/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({title, description, deadline, priority, category})
+    })
+    .then(res => res.json())
+    .then(taskData => {
+      console.log("Task created", taskData)
+      alert("Task created succefully")
+      taskForm.reset();
+    })
+    .catch(error => console.error("Error creating task:", error));
+  }
+
+  function pullTask() {
+    fetch("http://localhost:3000/tasks")
+    .then(res => res.json)
+    .then(listData => {
+      
+    })
+  }
+  
 })
