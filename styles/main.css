@@ -2,7 +2,16 @@ body{
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;}
+  background-color: #e6cccc;
+  height: 100%;
+  
+}
+#app{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: #e6cccc;
+}
 
 #introContainer{
  margin-top: 100px;
@@ -60,13 +69,18 @@ body{
 }
 
 #inform-container{
+  position: fixed;
+  top: 20px;
+  right: 10px;
   display: none;
-  max-width: 400px;
+  width: 400px;
   margin: 50px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 #inform-container h2 {
   text-align: center;
@@ -76,7 +90,7 @@ body{
 #inform-container button {
   /* width: 100%; */
   padding: 10px;
-  background-color: #007bff;
+  background-color: orange;
   color: white;
   border: none;
   border-radius: 5px;
@@ -85,7 +99,7 @@ body{
 }
 #submitButtonUp{
   padding: 10px;
-  background-color: #007bff;
+  background-color: orange;
   color: white;
   border: none;
   border-radius: 5px;
@@ -95,18 +109,23 @@ body{
 
 /* Button hover effect */
 #inform-container button:hover {
-  background-color: #0056b3;
+  background-color: rgb(212, 148, 30);
 }
 
 
 #upform-container {
+  position: fixed;
+  top: 20px;
+  right: 10px;
   display: none;
-  max-width: 400px;
+  width: 400px;
   margin: 50px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
   
 }
 
@@ -118,7 +137,7 @@ body{
 #form-container button {
   /* width: 100%; */
   padding: 10px;
-  background-color: #007bff;
+  background-color: orange;
   color: white;
   border: none;
   border-radius: 5px;
@@ -128,7 +147,23 @@ body{
 
 /* Button hover effect */
 #upform-container button:hover {
-  background-color: #0056b3;
+  background-color: rgb(212, 148, 30);
+}
+#closeButton {
+  position: absolute !important;
+  top: 5px !important;
+  right: 5px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#closeButton:hover {
+  color: black !important;
 }
 
 /* Styling for form groups */
@@ -192,7 +227,7 @@ button[type="submit"] {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #28a745;
+  background-color: orange;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -201,7 +236,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #218838;
+  background-color: rgb(212, 148, 30);
 }
 
 #tasksContainer {

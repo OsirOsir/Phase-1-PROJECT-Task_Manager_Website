@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     signInFormContainer.innerHTML = `
     <form id="signInForm">
           <h2>Sign In</h2>
+          <button id="closeButton">&times;</button>
           <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" id="userEmail" name="email" required>
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     signUpFormContainer.innerHTML = `
     <form id="signUpForm">
           <h2>Sign Up</h2>
+          <button id="closeButton">&times;</button>
           <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -107,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createButton.addEventListener("click", (e) => {
     taskFormContainer.innerHTML = `
         <form id="taskForm">
+        <button id="closeButton">&times;</button>
             <div class="form-group">
                 <label for="taskTitle">Task Title:</label>
                 <input type="text" id="taskTitle" name="taskTitle" required>
@@ -166,8 +169,9 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(error => console.error("Error creating task:", error));
   }
 
-  function pullTask() {
-    fetch(`http://localhost:3000/tasks?userId=${currentUser.id}`) // a querry parameter
+  function pullTask(category = "") {
+    const url = category ? `http://localhost:3000/tasks?userId=${currentUser.id}&category=${category}` : `http://localhost:3000/tasks?userId=${currentUser.id}`; 
+    fetch(url) // a querry parameter
       .then(res => res.json())
       .then(listData => {
         tasksList.innerHTML = "";
@@ -179,12 +183,21 @@ document.addEventListener("DOMContentLoaded", () => {
         <p>Deadline: ${task.deadline}</p>
         <p>Priority: ${task.priority}</p>
         <p>Category: ${task.category}</p>
+        <button id="editTask" data-task-id="${task.id}">Edit</button>
         <button id="deleteTask" data-task-id="${task.id}">Delete</button>        
         `;
 
           tasksList.appendChild(li);
         });
-        //adding eventlisteners to the buttons while it iterates through each button in the list and then calls the functions Taskdelete
+        document.querySelectorAll("#editTask").forEach(edit => {
+          edit.addEventListener("click", (e) => {
+            e.preventDefault();
+            const taskId = edit.getAttribute("data-task-id");
+            editTask(taskId)
+          })
+        })
+
+        //adding eventlisteners to the delete buttons while it iterates through each button in the list and then calls the functions Taskdelete
         document.querySelectorAll("#deleteTask").forEach(button => {
           button.addEventListener("click", (e) => {
             e.preventDefault();
@@ -194,6 +207,73 @@ document.addEventListener("DOMContentLoaded", () => {
         })
       });
   }
+
+  function editTask(taskId) {
+    fetch(`http://localhost:3000/tasks/${taskId}`)
+    .then(res => res.json())
+    .then(taskData => {
+      taskFormContainer.innerHTML = `
+      <form id="taskForm">
+            <div class="form-group">
+                <label for="taskTitle">Task Title:</label>
+                <input type="text" id="taskTitle" name="taskTitle" value="${taskData.title}" required>
+            </div>
+            <div class="form-group">
+                <label for="taskDescription">Description:</label>
+                <textarea id="taskDescription" name="taskDescription">${taskData.description}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="taskDeadline">Deadline:</label>
+                <input type="date" id="taskDeadline" name="taskDeadline" value="${taskData.deadline}">
+            </div>
+            <div class="form-group">
+                <label for="taskPriority">Priority:</label>
+                <select id="taskPriority" name="taskPriority">
+                    <option value="low" ${taskData.priority === "low" ? "selected" : ""}>Low</option>
+                    <option value="medium" ${taskData.priority === "medium" ? "selected" : ""}>Medium</option>
+                    <option value="high" ${taskData.priority === "high" ? "selected" : ""}>High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="taskCategory">Category:</label>
+                <input type="text" id="taskCategory" name="taskCategory" value="${taskData.category}">
+            </div>
+            <button type="submit">Update Task</button>
+        </form>
+      `;
+      const taskForm = document.getElementById("taskForm");
+      taskForm.style.display = "block"
+      taskForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const title = document.getElementById("taskTitle").value;
+        const description = document.getElementById("taskDescription").value;
+        const deadline = document.getElementById("taskDeadline").value;
+        const priority = document.getElementById("taskPriority").value;
+        const category = document.getElementById("taskCategory").value;
+
+        updateTask(taskId, title, description, deadline, priority, category);
+      });
+    });
+  }
+
+  function updateTask(taskId, title, description, deadline, priority, category) {
+    fetch(`http://localhost:3000/tasks/${taskId}`,{
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({title, description, deadline, priority, category})
+    })
+    .then(res => res.json())
+    .then(updatedData => {
+      console.log("task Updated", updatedData);
+      alert("Confirm Task Update");
+      taskFormContainer.innerHTML = "";  //clear the form 
+      pullTask()
+    })
+    .catch(error => console.error("Problem updating task!", error));
+  }
+
   function deleteTask(taskId) {
     fetch(`http://localhost:3000/tasks/${taskId}`, {
       method: "DELETE"
@@ -205,6 +285,11 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(error => console.error("Problem deleting task", error));
   }
 
-  
+  const filterCategory = document.getElementById("filterCategory");
+  filterCategory.addEventListener("change", () => {
+    const selectedCategory = filterCategory.value
+    pullTask(selectedCategory)
+  })
+
 
 })

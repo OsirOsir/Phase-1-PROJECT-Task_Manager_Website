@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <link rel="stylesheet" href="styles/footer.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
   <div id="app">
     <header>
@@ -17,49 +19,81 @@
           <button id="logButton">
             <span id="log">oTm</span>
           </button>
-          <p >oTmanager.io</p>
+          <p>oTmanager.io</p>
         </div>
         <div class="middle-part">
-          <a href="#products">Products</a>
-          <a href="#location">Location</a>
+          <a href="#home">Home</a>
+          <a href="#aboutUs">About Us</a>
           <a href="#pricing">Pricing</a>
           <a href="#FAQ">FAQ</a>
-          <a href="#Company">Company</a>
+          <!-- <a href="#Company">Company</a> -->
         </div>
         <div class="right-part">
           <button id="signIn">Sign In</button>
           <button id="signUp">Sign Up</button>
         </div>
       </div>
-      
+
     </header>
     <main>
       <div id="introContainer">
         <h1>Manage Your Task with</h1>
         <p>oTmanager</p>
         <div>
-          <button id="btn1">Create <br> <Span style="color: green; font-weight: bolder;">New Task</Span></button>
+          <button id="btn1">New Task</button>
           <button id="btn2">More....</button>
         </div>
       </div>
       <div id="inform-container"></div>
       <div id="upform-container"></div>
-
+      <div class="form-group">
+        <label for="filterCategory">Filter by Category:</label>
+        <select id="filterCategory" name="filterCategory">
+          <option value="">All</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
       <div id="taskFormContainer">
-        <!-- the form -->
+        <!-- the task form -->
       </div>
 
-       <!-- Tasks List -->
+      <!-- Tasks List display  -->
       <div id="tasksContainer">
         <h2>Your Tasks</h2>
         <ul id="tasksList">
-          
+
         </ul>
-    </div>
+      </div>
     </main>
+  </div>
+  <footer>
+    <div class=" mainFooterContent">
+      <div>
+        <h3>About </h3>
+        <a href="aboutUs">About us</a>
+        <a href="affiliates">Affiliates</a>
+        <a href="contacts">Get In Touch</a>
+      </div>
+      <div >
+        <h3>My Items</h3>
+        <a href="myAccount">My Account</a>
+        <a href="list">Task List</a>
+        <a href="order">Order Status</a>
+      </div>
+      <div>
+        <h3>News Letter</h3>
+        <div class="subDiv">
+          <input type="email" placeholder="Your email address">
+          <button class="footerBtn">SIGN UP</button>
+        </div>
+      </div>
     </div>
-    <footer></footer>
+    <p>copyright &copy; 2024 oTmanager Website built by OSIR. <span>All Rights Reserved</span></p>
+  </footer>
   </div>
   <script src="js/index.js"></script>
 </body>
+
 </html>
