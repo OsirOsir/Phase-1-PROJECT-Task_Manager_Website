@@ -6,41 +6,10 @@
       "password": "password123"
     },
     {
-      "id": "b707",
+      "id": "96e7",
       "email": "philip.otieno1@student.moringaschool.com",
-      "password": "passwar"
-    },
-    {
-      "id": "cb90",
-      "email": "anneWairimu@gmail.com",
-      "password": "sssssss"
-    },
-    {
-      "id": "fa55",
-      "email": "philiosir@student.moringaschool.com",
-      "password": "passwar"
-    },
-    {
-      "id": "3bba",
-      "email": "philip.otieno1@student.moringaschool.com",
-      "password": "dddd"
-    },
-    {
-      "id": "8dee",
-      "email": "philip.otieno1@student.moringaschool.com",
-      "password": "fff"
+      "password": "1234"
     }
   ],
-  "tasks": [
-    {
-      "id": "1",
-      "userId": 1,
-      "title": "Task 1",
-      "description": "This is task 1",
-      "deadline": "2024-07-20",
-      "priority": "High",
-      "category": "Work",
-      "completed": false
-    }
-  ]
+  "tasks": []
 }
