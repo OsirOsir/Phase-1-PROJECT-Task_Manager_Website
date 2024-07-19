@@ -31,11 +31,11 @@ To address these issues, the Osir Task Manager Website provides a seamless exper
 * Reminders and Notifications:** Users can receive reminders and notifications for upcoming deadlines.
 
 ## Technical Stack
-* HTML**
-* CSS**
-* JavaScript**
-* JSON server (db.json)**
-* Bootstrap**
+* HTML
+* CSS
+* JavaScript
+* JSON server (db.json)
+
 
 ## Setup Instructions
 1. **Clone the Repository:**
