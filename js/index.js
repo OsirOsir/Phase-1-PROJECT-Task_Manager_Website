@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const taskFormContainer = document.getElementById("taskFormContainer");
   const tasksList = document.getElementById("tasksList");
   const currentUser = JSON.parse(localStorage.getItem("currentUser")); //I'm retreving the currentUser object stored locally browser storage.. when I logged in 
+  const closeButton = document.getElementById("closeButton")
+  const closeButtonSignIn = document.getElementsByClassName("closeButtonSignIn");
+  const closeButtonSignUp = document.getElementsByClassName("closeButtonSignUp");
+
 
   pullTask();
 
@@ -16,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     signInFormContainer.innerHTML = `
     <form id="signInForm">
           <h2>Sign In</h2>
-          <button id="closeButton">&times;</button>
           <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" id="userEmail" name="email" required>
@@ -44,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     signUpFormContainer.innerHTML = `
     <form id="signUpForm">
           <h2>Sign Up</h2>
-          <button id="closeButton">&times;</button>
           <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -68,9 +70,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value
       registerUser(email, password)
-    })
+    });
 
-  })
+  });
 
   function registerUser(email, password) {
     fetch("http://localhost:3000/users", {
@@ -109,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createButton.addEventListener("click", (e) => {
     taskFormContainer.innerHTML = `
         <form id="taskForm">
-        <button id="closeButton">&times;</button>
+        <button id="closeBtnCreateForm">X</button>
             <div class="form-group">
                 <label for="taskTitle">Task Title:</label>
                 <input type="text" id="taskTitle" name="taskTitle" required>
@@ -170,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function pullTask(category = "") {
-    const url = category ? `http://localhost:3000/tasks?userId=${currentUser.id}&category=${category}` : `http://localhost:3000/tasks?userId=${currentUser.id}`; 
+    const url = category ? `http://localhost:3000/tasks?userId=${currentUser.id}&category=${category}` : `http://localhost:3000/tasks?userId=${currentUser.id}`;
     fetch(url) // a querry parameter
       .then(res => res.json())
       .then(listData => {
@@ -210,10 +212,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function editTask(taskId) {
     fetch(`http://localhost:3000/tasks/${taskId}`)
-    .then(res => res.json())
-    .then(taskData => {
-      taskFormContainer.innerHTML = `
+      .then(res => res.json())
+      .then(taskData => {
+        taskFormContainer.innerHTML = `
       <form id="taskForm">
+      <button id="closeBtnCreateForm">X</button>
             <div class="form-group">
                 <label for="taskTitle">Task Title:</label>
                 <input type="text" id="taskTitle" name="taskTitle" value="${taskData.title}" required>
@@ -241,37 +244,37 @@ document.addEventListener("DOMContentLoaded", () => {
             <button type="submit">Update Task</button>
         </form>
       `;
-      const taskForm = document.getElementById("taskForm");
-      taskForm.style.display = "block"
-      taskForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const title = document.getElementById("taskTitle").value;
-        const description = document.getElementById("taskDescription").value;
-        const deadline = document.getElementById("taskDeadline").value;
-        const priority = document.getElementById("taskPriority").value;
-        const category = document.getElementById("taskCategory").value;
+        const taskForm = document.getElementById("taskForm");
+        taskForm.style.display = "block"
+        taskForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const title = document.getElementById("taskTitle").value;
+          const description = document.getElementById("taskDescription").value;
+          const deadline = document.getElementById("taskDeadline").value;
+          const priority = document.getElementById("taskPriority").value;
+          const category = document.getElementById("taskCategory").value;
 
-        updateTask(taskId, title, description, deadline, priority, category);
+          updateTask(taskId, title, description, deadline, priority, category);
+        });
       });
-    });
   }
 
   function updateTask(taskId, title, description, deadline, priority, category) {
-    fetch(`http://localhost:3000/tasks/${taskId}`,{
+    fetch(`http://localhost:3000/tasks/${taskId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({title, description, deadline, priority, category})
+      body: JSON.stringify({ title, description, deadline, priority, category })
     })
-    .then(res => res.json())
-    .then(updatedData => {
-      console.log("task Updated", updatedData);
-      alert("Confirm Task Update");
-      taskFormContainer.innerHTML = "";  //clear the form 
-      pullTask()
-    })
-    .catch(error => console.error("Problem updating task!", error));
+      .then(res => res.json())
+      .then(updatedData => {
+        console.log("task Updated", updatedData);
+        alert("Confirm Task Update");
+        taskFormContainer.innerHTML = "";  //clear the form 
+        pullTask()
+      })
+      .catch(error => console.error("Problem updating task!", error));
   }
 
   function deleteTask(taskId) {
@@ -291,5 +294,11 @@ document.addEventListener("DOMContentLoaded", () => {
     pullTask(selectedCategory)
   })
 
+  // closeButton.addEventListener("click", () => {
+  //   signInFormContainer.innerHTML = ""
+  //   signInFormContainer.style.display = "none"
+  // })
+  
+  
 
-})
+});

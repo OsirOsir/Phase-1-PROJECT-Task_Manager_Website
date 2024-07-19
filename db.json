@@ -29,31 +29,6 @@
       "id": "8dee",
       "email": "philip.otieno1@student.moringaschool.com",
       "password": "fff"
-    },
-    {
-      "id": "3745",
-      "email": "philip.otieno1@student.moringaschool.com",
-      "password": "lllllllllllllll"
-    },
-    {
-      "id": "85d4",
-      "email": "anneWairimu@gmail.com",
-      "password": "llllllllll"
-    },
-    {
-      "id": "f0c6",
-      "email": "philip.otieno1@student.moringaschool.com",
-      "password": "ssss"
-    },
-    {
-      "id": "e3e9",
-      "email": "philip.otieno1@student.moringaschool.com",
-      "password": "sss"
-    },
-    {
-      "id": "b2d1",
-      "email": "philip.otieno1@student.moringaschool.com",
-      "password": "cccccccc"
     }
   ],
   "tasks": [
@@ -66,14 +41,6 @@
       "priority": "High",
       "category": "Work",
       "completed": false
-    },
-    {
-      "id": "6e7a",
-      "title": "My First task",
-      "description": "aaaaaaaaaaaaa",
-      "deadline": "2024-07-17",
-      "priority": "low",
-      "category": "other"
     }
   ]
 }

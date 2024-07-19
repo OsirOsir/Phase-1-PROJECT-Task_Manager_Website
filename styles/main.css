@@ -1,25 +1,39 @@
-body{
+body {
+
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #e6cccc;
   height: 100%;
-  
 }
-#app{
+
+#app {
+  background-image: url('/backGroundImage/organized-workspace-inspiration-stockcake.jpg');
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: #e6cccc;
+}
+.backGroundImage{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: url('path/to/your/background-image.jpg') no-repeat center center/cover; */
+  filter: blur(2px); /* Adjust the blur level as needed */
+  z-index: -1; /* Ensure it is behind other content */
 }
 
-#introContainer{
- margin-top: 100px;
- display: flex;
- align-items: center;
- text-align: center;
- flex-direction: column;
+#introContainer {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
 }
+#introContainer h1{
+  font-weight: bolder;
+}
+
 #btn1 {
   padding: 5px 20px;
   background-color: orange;
@@ -29,20 +43,22 @@ body{
   cursor: pointer;
   font-size: 16px;
   outline: none;
-  transition: color 0.15s, background-color 0.15s ;
+  transition: color 0.15s, background-color 0.15s;
 
 }
 
 #btn1:hover {
   background-color: rgb(212, 148, 30);
 }
-#btn1:active{
+
+#btn1:active {
   border: none;
   background-color: rgb(131, 95, 30);
 }
+
 #btn2 {
   padding: 5px 20px;
-  background-color:transparent;
+  background-color: transparent;
   color: rgb(25, 85, 25);
   border: none;
   border-radius: 5px;
@@ -54,8 +70,7 @@ body{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   /* border: 1px solid rgba(255, 255, 255, 0.2); */
-  transition: color 0.15s, background-color 0.15s ;
-
+  transition: color 0.15s, background-color 0.15s;
 }
 
 #btn2:hover {
@@ -63,12 +78,13 @@ body{
   background-color: rgb(233, 230, 230);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.1);
 }
-#btn2:active{
+
+#btn2:active {
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-#inform-container{
+#inform-container {
   position: fixed;
   top: 20px;
   right: 10px;
@@ -78,26 +94,33 @@ body{
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgb(170, 167, 167);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
   z-index: 1000;
 }
+
 #inform-container h2 {
   text-align: center;
   margin-bottom: 20px;
 }
+
 /* Button styling */
 #inform-container button {
   /* width: 100%; */
   padding: 10px;
-  background-color: orange;
+  /* background-color: orange !important; */
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
 }
-#submitButtonUp{
+
+#signInForm .form-group input {
+  background-color: rgb(218, 208, 208);
+}
+
+#submitButtonUp {
   padding: 10px;
   background-color: orange;
   color: white;
@@ -123,10 +146,20 @@ body{
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgb(170, 167, 167);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
   z-index: 1000;
-  
+
+}
+
+#signUpForm .form-group input {
+  background-color: rgb(218, 208, 208);
+}
+
+#signUpForm .form-group input:active {
+  border: none;
+  outline: none;
 }
 
 /* Heading styling */
@@ -134,6 +167,7 @@ body{
   text-align: center;
   margin-bottom: 20px;
 }
+
 #form-container button {
   /* width: 100%; */
   padding: 10px;
@@ -149,21 +183,29 @@ body{
 #upform-container button:hover {
   background-color: rgb(212, 148, 30);
 }
+
+
 #closeButton {
+  color: black !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
   position: absolute !important;
+  padding: 0;
   top: 5px !important;
-  right: 5px;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
+  right: 5px !important;
+  height: 40px !important;
+  width: 40px !important;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: transparent; */
+  border: none !important;
+  font-size: 40px !important;
+  cursor: pointer !important;
 }
 
 #closeButton:hover {
-  color: black !important;
+  color: red !important;
 }
 
 /* Styling for form groups */
@@ -190,14 +232,53 @@ body{
   width: 50%;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: none;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
 #taskFormContainer h2 {
   text-align: center;
   margin-bottom: 20px;
+  background-color: none;
+}
+
+#taskForm {
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: rgb(170, 167, 167);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+
+}
+
+#closeBtnCreateForm {
+  color: black !important;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  padding: 0;
+  float: right;
+  margin-bottom: 10px;
+  padding: 0;
+  height: 40px;
+  width: 40px ;
+  border-radius: 50% ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: transparent; */
+  border: none !important;
+  font-size: 40px !important;
+  cursor: pointer !important;
+}
+#closeBtnCreateForm:hover{
+  color: red !important;
+}
+
+#taskForm .form-group input,
+#taskForm .form-group #taskPriority,
+#taskForm .form-group textarea {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .form-group {
@@ -220,7 +301,7 @@ body{
 }
 
 .form-group textarea {
-  resize: vertical;
+  resize: horizontal;
 }
 
 button[type="submit"] {
@@ -240,34 +321,61 @@ button[type="submit"]:hover {
 }
 
 #tasksContainer {
+  /* display: flex;
+  flex-direction: column; */
   width: 50%;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.5);  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
 #tasksContainer h2 {
   text-align: center;
   margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid: 10px;
 }
 
 #tasksList {
   list-style-type: none;
-  padding: 0;
+  background-color: none;
+  /* Example background color */
+  padding: 10px;
+  border-radius: 5px;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+
 }
 
 #tasksList li {
-  background-color: #f9f9f9;
+  background-color: none;
   padding: 15px;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   border-radius: 4px;
   margin-bottom: 10px;
+  box-shadow: 0 3px 24px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.5);  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 #tasksList li h3 {
   margin-top: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#tasksList li #editTask {
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+#tasksList li #editTask:hover {
+  color: black;
 }
 
 #tasksList li button {
@@ -278,10 +386,41 @@ button[type="submit"]:hover {
   cursor: pointer;
   padding: 5px 10px;
   font-size: 14px;
+  margin-right: 200px;
 }
 
 #tasksList li button:hover {
   background-color: #c82333;
+  color: black;
 }
 
+#signInForm input,
+#signUpForm input,
+#taskForm input,
+#signInForm button,
+#signUpForm button,
+#taskForm button {
+  outline: none !important;
+  padding: 10px !important;
+  font-size: 16px !important;
+  /* Add any other styles you want here */
+}
 
+.form-groupFilter {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  width: 300px;
+  padding: 10px;
+  border-radius: 2px;
+  background-color: rgb(255, 255, 255, 0.2);
+  position: fixed;
+  color: black;
+  font-weight: bold;
+}
+#filterCategory{
+  background-color: rgb(255, 255, 255, 0.2);
+  color: black;
+ 
+}
+#filterCategory option{
+  background-color: rgb(255, 255, 255);
+}
