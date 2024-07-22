@@ -8,10 +8,8 @@
 - [Technical Stack](#technical-stack)
 - [Setup Instructions](#setup-instructions)
 - [Usage](#usage)
-- [Screenshots](#screenshots)
-- [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 The **Osir Task Manager Website** is a web-based application designed to help individuals efficiently manage their daily tasks and responsibilities. By providing a structured system, the application ensures that tasks are organized, prioritized, and tracked effectively, reducing the chances of forgotten or mismanaged tasks and increasing productivity.
