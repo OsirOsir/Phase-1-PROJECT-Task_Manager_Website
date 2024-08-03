@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButtonSignUp = document.getElementsByClassName("closeButtonSignUp");
 
 
-  pullTask();
+  
 
   signInButton.addEventListener("click", (e) => {
     e.preventDefault()
@@ -170,7 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(error => console.error("Error creating task:", error));
   }
-
+  
+  pullTask();
   function pullTask(category = "") {
     const url = category ? `http://localhost:3000/tasks?userId=${currentUser.id}&category=${category}` : `http://localhost:3000/tasks?userId=${currentUser.id}`;
     fetch(url) // a querry parameter
