@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-   pullTask();
+  pullTask();
   function pullTask(category = "") {
     const url = category ? `http://localhost:3000/tasks?userId=${currentUser.id}&category=${category}` : `http://localhost:3000/tasks?userId=${currentUser.id}`;
     fetch(url) // a querry parameter
@@ -191,9 +191,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <button id="editTask" data-task-id="${task.id}">Edit</button>
         <button id="deleteTask" data-task-id="${task.id}">Delete</button>        
         `;
-
           tasksList.appendChild(li);
         });
+        
         document.querySelectorAll("#editTask").forEach(edit => {
           edit.addEventListener("click", (e) => {
             e.preventDefault();

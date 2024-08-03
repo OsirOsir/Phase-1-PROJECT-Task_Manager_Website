@@ -14,7 +14,29 @@
       "id": "06bf",
       "email": "philip.otieno1@student.moringaschool.com",
       "password": "12345"
+    },
+    {
+      "id": "20ab",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "12345"
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "id": "1219",
+      "title": "My First task",
+      "description": "aaaaaaaaaaa",
+      "deadline": "2024-08-27",
+      "priority": "medium",
+      "category": "Home"
+    },
+    {
+      "id": "78d6",
+      "title": "My First task",
+      "description": "aaaaaaaaa",
+      "deadline": "2024-08-11",
+      "priority": "high",
+      "category": "Work"
+    }
+  ]
 }
