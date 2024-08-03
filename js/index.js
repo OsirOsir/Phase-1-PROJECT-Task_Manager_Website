@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const signInButton = document.getElementById("signIn");
+  // console.log(signInButton)
   const signUpButton = document.getElementById("signUp");
   const signInFormContainer = document.getElementById("inform-container");
+  console.log(signInFormContainer)
   const signUpFormContainer = document.getElementById("upform-container");
   const createButton = document.getElementById("btn1");
   // const mreButton = document.getElementById("btn2");
@@ -13,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButtonSignUp = document.getElementsByClassName("closeButtonSignUp");
 
 
-  pullTask();
+  
+  // console.log(pullTask())
 
   signInButton.addEventListener("click", (e) => {
     e.preventDefault()
@@ -32,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </form>
     `
     signInFormContainer.style.display = "block"
-    // signInFormContainer.style.zIndex = 1000
+    signInFormContainer.style.zIndex = 1000
 
     document.getElementById("signInForm").addEventListener("submit", (e) => {
       e.preventDefault()
@@ -170,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(error => console.error("Error creating task:", error));
   }
-
+   pullTask();
   function pullTask(category = "") {
     const url = category ? `http://localhost:3000/tasks?userId=${currentUser.id}&category=${category}` : `http://localhost:3000/tasks?userId=${currentUser.id}`;
     fetch(url) // a querry parameter

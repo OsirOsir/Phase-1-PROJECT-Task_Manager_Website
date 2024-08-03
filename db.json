@@ -1,14 +1,19 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "testuser",
-      "password": "password123"
-    },
-    {
-      "id": "96e7",
+      "id": "a36f",
       "email": "philip.otieno1@student.moringaschool.com",
       "password": "1234"
+    },
+    {
+      "id": "2d92",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "12345"
+    },
+    {
+      "id": "06bf",
+      "email": "philip.otieno1@student.moringaschool.com",
+      "password": "12345"
     }
   ],
   "tasks": []
