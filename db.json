@@ -37,6 +37,14 @@
       "deadline": "2024-08-11",
       "priority": "high",
       "category": "Work"
+    },
+    {
+      "id": "7224",
+      "title": "My First task",
+      "description": "122344",
+      "deadline": "2024-08-14",
+      "priority": "low",
+      "category": "Home Activity "
     }
   ]
 }
