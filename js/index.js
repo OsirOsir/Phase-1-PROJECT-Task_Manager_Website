@@ -13,8 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButton = document.getElementById("closeButton")
   const closeButtonSignIn = document.getElementsByClassName("closeButtonSignIn");
   const closeButtonSignUp = document.getElementsByClassName("closeButtonSignUp");
-
-
   
   // console.log(pullTask())
 
@@ -173,6 +171,8 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(error => console.error("Error creating task:", error));
   }
+
+
    pullTask();
   function pullTask(category = "") {
     const url = category ? `http://localhost:3000/tasks?userId=${currentUser.id}&category=${category}` : `http://localhost:3000/tasks?userId=${currentUser.id}`;
