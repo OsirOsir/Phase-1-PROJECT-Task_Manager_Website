@@ -1,66 +1,58 @@
-# Osir Task Manager Website
+### GROUP THREE TASK MANAGER WEBSITE
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Problem Statement](#problem-statement)
-- [Solution](#solution)
-- [MVP Features](#mvp-features)
-- [Technical Stack](#technical-stack)
-- [Setup Instructions](#setup-instructions)
-- [Usage](#usage)
-- [Contributing](#contributing)
+Problem Statement
 
+Many individuals struggle with managing their daily tasks and responsibilities efficiently. Without an organized system, tasks can easily be overlooked or mismanaged, leading to reduced productivity and increased stress. There is a need for an inclusive, user-friendly website that helps individuals effectively organize, prioritize, and track their tasks. Additionally, user preferences for light or dark mode interfaces can significantly impact their overall experience.
 
-## Introduction
-The **Osir Task Manager Website** is a web-based application designed to help individuals efficiently manage their daily tasks and responsibilities. By providing a structured system, the application ensures that tasks are organized, prioritized, and tracked effectively, reducing the chances of forgotten or mismanaged tasks and increasing productivity.
+Solution
 
-## Problem Statement
-Many individuals face challenges in managing their daily tasks and responsibilities efficiently. Without a structured system, tasks can easily be forgotten or mismanaged, leading to decreased productivity and increased stress. There is a need for an easy-to-use application that helps users organize and prioritize their tasks effectively.
+To address these challenges, we propose developing the Task Manager website, a robust task management tool designed to provide a smooth user experience for task organization. The website will feature a secure login system and allow users to create, edit, and delete tasks, set deadlines, and categorize tasks by project or group. Users will have the ability to track the status and progress of their tasks (i.e., completed, in progress) and set priorities from highest to lowest, ensuring important tasks are prioritized. The platform will include options for both light and dark mode to cater to user preferences. Additionally, the website will offer advanced filtering and sorting features to help users efficiently manage their tasks and stay organized. The website's responsiveness will be improved to accommodate different devices.
 
-## Solution
-To address these issues, the Osir Task Manager Website provides a seamless experience for users to organize their tasks. The website allows users to securely log in, create, edit, and delete tasks, set deadlines, and categorize tasks by priority. It securely stores user credentials, task information, and other related data. Ultimately, the website provides reminders and notifications to help users stay on top of their responsibilities.
+MVP Features
+- User authentication: users can create, update, edit, and delete profiles.
+- Users can create, edit, and delete tasks.
+- Users can categorize tasks into different projects or groups.
+- Users can filter tasks by categories for their upcoming deadlines.
+- Users can track the status and progress of tasks.
+- Users can set the priority of tasks.
 
-## MVP Features
-* User Authentication:** Secure login and sign-up functionality.
-* Task Management:** Users can create, edit, and delete tasks.
-* Deadlines and Priorities:** Users can set deadlines and prioritize tasks.
-* Task Categorization:** Users can categorize tasks into different projects or groups.
-* Task Views:** Users can view tasks in a calendar or list view.
-* Reminders and Notifications:** Users can receive reminders and notifications for upcoming deadlines.
-
-## Technical Stack
-* HTML
-* CSS
-* JavaScript
-* JSON server (db.json)
+Technical Expectations
+- HTML
+- CSS
+- JavaScript
+- JSON server (db.json)
 
 
 ## Setup Instructions
 1. **Clone the Repository:**
-   git clone https://github.com/yourusername/osir-task-manager.git
+ 
+   git clone https://github.com/yourusername/task-manager.git
+ 
 2. **Navigate to the Project Directory:**
-   cd osir-task-manager
+  
 3. **Install JSON Server:**
+  
    npm install -g json-server
 4. **Start the JSON Server:**
    json-server --watch db.json
+
 5. **Open `index.html` in your browser:**
    open index.html
 
 ## Usage
-1. **Sign Up:**
+1. Sign Up:
    - Open the application and click on the "Sign Up" button.
    - Fill in the required details and submit the form.
-2. **Sign In:**
+2. Sign In:
    - Use your credentials to sign in.
    - After successful login, you will be redirected to the dashboard.
-3. **Create a Task:**
+3. Create a Task:
    - Fill in the task details in the task form and submit.
    - The task will be displayed in your task list.
-4. **Edit a Task:**
+4. Edit a Task:
    - Click on the "Edit" button next to the task you want to edit.
    - Update the task details and save changes.
-5. **Delete a Task:**
+5. Delete a Task:
    - Click on the "Delete" button next to the task you want to delete.
 
 ## Contributing

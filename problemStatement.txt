@@ -1,24 +1,35 @@
-## Osir Task Manager Website
-
-##Problem Statement
-Many individuals  face challenges in managing their daily tasks and responsibilities efficiently. Without a structured system, tasks can easily be forgotten or mismanaged, leading to decreased productivity and increased stress. There is a need for an easy-to-use application that helps users organize and prioritize their tasks effectively.
-
-##Solution
-To address these issues, I will develop a task management website that provides a seamless experience for users to organize their tasks. The website  will allow users to securely log in, create, edit, and delete tasks, set deadlines, and categorize tasks by priority. It will securely store user credentials, task information, and other related data. Ultimately, the website will provide reminders and notifications to help users stay on top of their responsibilities.
-
-##MVP Features
-User authentication.
-Users can create, edit, and delete tasks.
-Users can set deadlines and priorities for tasks.
-Users can categorize tasks into different projects or groups.
-Users can view tasks in a calendar or list view.
-Users can receive reminders and notifications for upcoming deadlines.
-
-##Technical Expectations
-HTML
-CSS
-JavaScript
-JSON server (db.json)
-Bootstrap
+GROUP THREE TASK MANAGER WEBSITE
 
 
+Problem Statement
+Many individuals struggle with managing their daily tasks and responsibilities efficiently. Without an
+organized system, tasks can easily be overlooked or mismanaged, leading to reduced productivity and
+increased stress. There is a need for an inclusive, user-friendly website that helps individuals effectively
+organize, prioritize, and track their tasks. Additionally, user preferences for light or dark mode
+interfaces can significantly impact their overall experience.
+
+
+Solution
+To tackle these challenges, We propose developing the Task Manager website, a robust task
+management tool designed to provide a smooth user experience for task organization. The website will
+feature a secure login system and allow users to create, edit, and delete tasks, set deadlines, and
+categorize tasks by project or group. Users will have the ability to track the status and progress of their
+tasks ie completed,in progress and also set priorities from highest to lowest, ensuring important tasks
+are prioritized. The platform will include options for both light and dark mode to cater to user
+preferences. Additionally, the website will offer advanced filtering and sorting features to help users
+efficiently manage their tasks and stay organized. The website responsiveness will be improved to also
+accommodate different devices.
+
+MVP Features
+- User authentication;users can create,update,edit,delete profile.
+- Users can create, edit, and delete tasks.
+- Users can categorize tasks into different projects or groups.
+- Users can filter tasks by categories for their upcoming deadlines.
+- Users can track the status and progress of tasks.
+- Users can set the priority of tasks
+
+Technical Expectations
+- HTML
+- CSS
+- JavaScript
+- JSON server (db.json)
